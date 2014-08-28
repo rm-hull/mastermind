@@ -15,9 +15,8 @@ The game is played using:
   large holes, and twelve (or ten, or eight, or six) additional rows 
   containing four large holes next to a set of four small holes;
 
-* _code pegs_ of six (or more; see Variations below) different colors, 
-  with round heads, which will be placed in the large holes on the 
-  board; and
+* _code pegs_ of six different colors, with round heads, which will be 
+  placed in the large holes on the board; and
   
 * _key pegs_, some colored or black, some white, which are flat-headed 
   and smaller than the code pegs; they will be placed in the small holes
