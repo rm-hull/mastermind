@@ -51,9 +51,33 @@
 (defn choose-secret []
   (rand-nth universe))
 
-(choose-secret)
+(defn fix [r]     ; fix point combinator
+  ((fn [f] (f f))
+   (fn [f]
+     (r (fn [x] ((f f) x))))))
 
-(defn flip [f x y]
-  (f y x))
+(defn make-guess [history universe]
+  (if (empty? history)
+    (first universe)
+    (let [[guess score] (first history)]
+      (recur
+        (rest history)
+        (for [g' universe
+              :when (= score (calc-score g' guess))]
+          g')))))
+
+(defn play-guesser [secret universe]
+  (letfn [(loop [func]
+            (fn [history]
+              (let [guess (make-guess history universe)
+                    score (calc-score secret guess)
+                    history' (cons [guess score] history)]
+                (if (= (score :right) 4)
+                  history'
+                  (func history')))))]
+    ((fix loop) nil)))
 
 
+(def secret (choose-secret))
+(println secret)
+(play-guesser secret universe)
